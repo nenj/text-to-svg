@@ -49,8 +49,9 @@ export class TextToSVG {
     let y = options.y || 0;
     let fontSize = options.fontSize || 72;
     let kerning = 'kerning' in options ? options.kerning : true;
+    let letterSpacing = 'letterSpacing' in options ? options.letterSpacing : 0;
 
-    let path = this.font.getPath(text, x, y, fontSize, {kerning});
+    let path = this.font.getPath(text, x, y, fontSize, {kerning: kerning, letterSpacing: letterSpacing});
     return path.commands.map(cmd => cmdToSVG(cmd)).join(' ');
   }
 
